@@ -15,7 +15,6 @@ const HeaderNavbar = () => {
     <div className="z-10 fixed w-full text-xs">
       {/* ----- Activate Announcement Bar Here Below ----- */}
       {/* <AnnouncementBar /> */}
-      <AnnouncementBar />
 
       {/* ----- Header Bar Section ----- */}
       <nav className="bg-transparent">

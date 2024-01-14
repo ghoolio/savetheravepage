@@ -1,0 +1,205 @@
+type Category {
+  created_at: DateTime!
+  description: String
+  id: ID!
+  profile: ID
+  title: String
+}
+
+type Post {
+  category: ID
+  created_at: DateTime!
+  description: String
+  id: ID!
+  images: JSON
+  profile: ID
+  title: String
+}
+
+type Profiles {
+  avatar_url: String
+  email: String
+  full_name: String
+  id: ID!
+  updated_at: DateTime
+  website: String
+}
+
+"""
+The following queries are just a set of examples of how to access your schema.
+Feel free to modify them or aggregate more.
+"""
+type Query {
+  " Queries for type 'Category' "
+  categoryList: [Category]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "category"
+      configuration: "postgresql_config"
+    )
+  categoryListByTitle(title: String!): [Category]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from category where title = $1
+      """
+      schema: "public"
+      table: "category"
+      configuration: "postgresql_config"
+    )  
+  categoryPaginatedList(first: Int, after: Int): [Category]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      SELECT "created_at", "description", "id", "profile", "title" FROM "category" LIMIT $1 OFFSET $2
+      """
+      configuration: "postgresql_config"
+    )
+  " Queries for type 'Post' "
+  postList: [Post]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "post"
+      configuration: "postgresql_config"
+    )
+  postPaginatedList(first: Int, after: Int): [Post]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      SELECT "category", "created_at", "description", "id", "images", "profile", "title" FROM "post" LIMIT $1 OFFSET $2
+      """
+      configuration: "postgresql_config"
+    )
+  " Queries for type 'Profiles' "
+  profilesById(id: ID!): [Profiles]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "profiles"
+      configuration: "postgresql_config"
+    )
+  profilesByIdAndWebsite(id: ID!, website: String!): [Profiles]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "profiles"
+      configuration: "postgresql_config"
+    )
+  profilesList: [Profiles]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "profiles"
+      configuration: "postgresql_config"
+    )
+  profilesPaginatedList(first: Int, after: Int): [Profiles]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """
+      SELECT "avatar_url", "email", "full_name", "id", "updated_at", "website" FROM "profiles" LIMIT $1 OFFSET $2
+      """
+      configuration: "postgresql_config"
+    )
+}
+
+"""
+The following mutations are just a set of examples of how to access your schema.
+Feel free to modify them or aggregate more.
+"""
+type Mutation {
+  " Mutations for type 'Category' "
+  deleteCategory(
+    description: String!
+    id: ID!
+    profile: ID!
+    created_at: DateTime!
+    title: String!
+  ): Category
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "category"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  insertCategory(
+    description: String
+    profile: ID
+    title: String
+  ): Category
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "category"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  " Mutations for type 'Post' "
+  deletePost(
+    description: String!
+    id: ID!
+    profile: ID!
+    category: ID!
+    created_at: DateTime!
+    title: String!
+    images: JSON!
+  ): Post
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "post"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  insertPost(
+    description: String
+    profile: ID
+    category: ID
+    created_at: DateTime!
+    title: String
+    images: JSON
+  ): Post
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "post"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  " Mutations for type 'Profiles' "
+  deleteProfiles(
+    website: String!
+    email: String!
+    full_name: String!
+    id: ID!
+    updated_at: DateTime!
+    avatar_url: String!
+  ): Profiles
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "profiles"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  insertProfiles(
+    website: String
+    email: String
+    full_name: String
+    id: ID!
+    updated_at: DateTime
+    avatar_url: String
+  ): Profiles
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "profiles"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+}

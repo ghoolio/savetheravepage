@@ -1,15 +1,45 @@
 "use client";
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Auth } from '@supabase/auth-ui-react';
 import { supabaseClient } from '@/lib/supabaseClient';
 import { ThemeSupa } from '@supabase/auth-ui-shared'
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const page = () => {
+  const router = useRouter();
+  const supabaseClient = useSupabaseClient();
+  const user = useUser();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [user]);
+
+  if (user) {
+    router.push("/contentghool");
+    return <p>Laden ..</p>
+  }
+
+  if (loading) {
+    return <p>Laden ..</p>
+  }
+
   return (
-    <div>
-        <div className='mt-10 md:mt-0 w-full'>
-            <h1 className='text-2xl'>CMP Login</h1>
+    <div className='h-[calc(100vh-80px)] flex items-center justify-center'>
+        <div className='mt-10 md:mt-0 md:w-8/12 mx-auto'>
+        
+        <div className='mx-auto' style={{ width: 'fit-content' }}>
+          <Image
+            className='z-10'
+            src="/images/stradminlogo.png"
+            width={300}
+            height={300}
+          />
+        </div>
+            <h1 className='text-2xl'>Login</h1>
             <Auth 
                 localization={{
                     variables: {

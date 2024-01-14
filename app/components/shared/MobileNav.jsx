@@ -17,7 +17,7 @@ const MobileNav = () => {
         <nav>
             <div className='text-white lg:hidden'>
                 <button
-                    className="inline-flex items-center justify-center p-2.5 rounded-md text-white md:text-white 
+                    className="z-50 inline-flex items-center justify-center p-2.5 rounded-md text-white md:text-white 
                     hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white bg-black/5 shadow-sm hover:bg-black/10"
                     onClick={toggleNavbar}
                 >
@@ -53,12 +53,14 @@ const MobileNav = () => {
                         </svg>
                     )}
                 </button>
-
+                
                 {isClick && (
                     <div className={`md:hidden ${isClick ? "block" : "hidden"} bg-black absolute top-0 right-0 w-full h-full z-50`}>
-                        <div className="w-full h-screen px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black z-50">
+                        <div className="w-full h-screen pb-3 space-y-1 sm:px-3 bg-black z-50">
                             <div 
                                 className="flex justify-between items-center px-12 p-4"
+                            >
+                            <div 
                                 onMouseEnter={onMouseEnter}
                                 onMouseLeave={onMouseLeave}
                             >
@@ -80,40 +82,79 @@ const MobileNav = () => {
                                     )} 
                                 </Link>
                             </div>
+                                <button
+                                    className="z-50 inline-flex items-center justify-center p-2.5 rounded-md text-white md:text-white 
+                                    hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white bg-black/5 shadow-sm hover:bg-black/10"
+                                    onClick={toggleNavbar}
+                                >
+                                    {isClick ? (
+                                        <svg
+                                            className="h-6 w-6 z-50"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M6 18L18 6M6 6l12 12"
+                                            />
+                                        </svg>
+                                    ) : (
+                                        <svg
+                                            className="h-6 w-6 z-50"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M4 6h16M4 12h16m-7 6h7"
+                                            />
+                                        </svg>
+                                    )}
+                                </button>
+                            </div>
+                            
                             <ul className="pt-10">
                                 <a
                                     href="#events"
-                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-white"
+                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-red-700"
                                 >
                                     Events
                                 </a>
                                 <a
                                     href="#tickets"
-                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-white"
+                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-red-700"
                                 >
                                     Tickets
                                 </a>
                                 <a
                                     href="#artists"
-                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-white"
+                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-red-700"
                                 >
                                     Artists
                                 </a>
                                 <a
                                     href="#artists"
-                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-white"
+                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-red-700"
                                 >
                                     Store
                                 </a>
                                 <a
                                     href="#faq"
-                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-white"
+                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-red-700"
                                 >
                                     FAQ
                                 </a>
                             </ul>
                             
-                            <ul className="flex justify-center hover:cursor-pointer pl-4 pt-10">
+                            <ul className="flex justify-center hover:cursor-pointer pt-10">
                                 <li className='text-white py-1 px-2 hover:rounded hover:bg-black/5'>
                                     <a href="https://t.me/+cQNcvSJW6RwzNTQy">
                                     <svg

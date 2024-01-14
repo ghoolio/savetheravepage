@@ -55,7 +55,7 @@ const MobileNav = () => {
                 </button>
                 
                 {isClick && (
-                    <div className={`md:hidden ${isClick ? "block" : "hidden"} bg-black absolute top-0 right-0 w-full h-full z-50`}>
+                    <div className={`lg:hidden ${isClick ? "block" : "hidden"} bg-black absolute top-0 right-0 w-full h-full z-50`}>
                         <div className="w-full h-screen pb-3 space-y-1 sm:px-3 bg-black z-50">
                             <div 
                                 className="flex justify-between items-center px-12 p-4"

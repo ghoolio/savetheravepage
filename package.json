@@ -36,6 +36,7 @@
     "react-icons": "^5.0.1",
     "recoil": "^0.7.7",
     "stepzen": "^0.33.0",
+    "stripe": "^14.12.0",
     "svix": "^1.15.0",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",

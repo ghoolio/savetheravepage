@@ -1,14 +1,16 @@
-import { clsx } from 'clsx'
+import { type ClassValue, clsx } from 'clsx'
 
 import { twMerge } from 'tailwind-merge'
 import qs from 'query-string'
 
-export function cn(...inputs) {
+import { UrlQueryParams, RemoveUrlQueryParams } from '../types'
+
+export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const formatDateTime = (dateString) => {
-  const dateTimeOptions = {
+export const formatDateTime = (dateString: Date) => {
+  const dateTimeOptions: Intl.DateTimeFormatOptions = {
     weekday: 'short', // abbreviated weekday name (e.g., 'Mon')
     month: 'short', // abbreviated month name (e.g., 'Oct')
     day: 'numeric', // numeric day of the month (e.g., '25')
@@ -17,24 +19,24 @@ export const formatDateTime = (dateString) => {
     hour12: true, // use 12-hour clock (true) or 24-hour clock (false)
   }
 
-  const dateOptions = {
+  const dateOptions: Intl.DateTimeFormatOptions = {
     weekday: 'short', // abbreviated weekday name (e.g., 'Mon')
     month: 'short', // abbreviated month name (e.g., 'Oct')
     year: 'numeric', // numeric year (e.g., '2023')
     day: 'numeric', // numeric day of the month (e.g., '25')
   }
 
-  const timeOptions = {
+  const timeOptions: Intl.DateTimeFormatOptions = {
     hour: 'numeric', // numeric hour (e.g., '8')
     minute: 'numeric', // numeric minute (e.g., '30')
     hour12: true, // use 12-hour clock (true) or 24-hour clock (false)
   }
 
-  const formattedDateTime = new Date(dateString).toLocaleString('en-US', dateTimeOptions)
+  const formattedDateTime: string = new Date(dateString).toLocaleString('en-US', dateTimeOptions)
 
-  const formattedDate = new Date(dateString).toLocaleString('en-US', dateOptions)
+  const formattedDate: string = new Date(dateString).toLocaleString('en-US', dateOptions)
 
-  const formattedTime = new Date(dateString).toLocaleString('en-US', timeOptions)
+  const formattedTime: string = new Date(dateString).toLocaleString('en-US', timeOptions)
 
   return {
     dateTime: formattedDateTime,
@@ -43,9 +45,9 @@ export const formatDateTime = (dateString) => {
   }
 }
 
-export const convertFileToUrl = (file) => URL.createObjectURL(file)
+export const convertFileToUrl = (file: File) => URL.createObjectURL(file)
 
-export const formatPrice = (price) => {
+export const formatPrice = (price: string) => {
   const amount = parseFloat(price)
   const formattedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -55,7 +57,7 @@ export const formatPrice = (price) => {
   return formattedPrice
 }
 
-export function formUrlQuery({ params, key, value }) {
+export function formUrlQuery({ params, key, value }: UrlQueryParams) {
   const currentUrl = qs.parse(params)
 
   currentUrl[key] = value
@@ -69,7 +71,7 @@ export function formUrlQuery({ params, key, value }) {
   )
 }
 
-export function removeKeysFromQuery({ params, keysToRemove }) {
+export function removeKeysFromQuery({ params, keysToRemove }: RemoveUrlQueryParams) {
   const currentUrl = qs.parse(params)
 
   keysToRemove.forEach(key => {
@@ -85,7 +87,7 @@ export function removeKeysFromQuery({ params, keysToRemove }) {
   )
 }
 
-export const handleError = (error) => {
+export const handleError = (error: unknown) => {
   console.error(error)
   throw new Error(typeof error === 'string' ? error : JSON.stringify(error))
 }

@@ -8,7 +8,9 @@ import Order from '../../lib/database/models/order.model'
 import Event from '../../lib/database/models/event.model'
 import { handleError } from '../../lib/utils'
 
-export async function createUser(user) {
+import { CreateUserParams, UpdateUserParams } from '../../types'
+
+export async function createUser(user: CreateUserParams) {
   try {
     await connectToDatabase()
 
@@ -19,7 +21,7 @@ export async function createUser(user) {
   }
 }
 
-export async function getUserById(userId) {
+export async function getUserById(userId: string) {
   try {
     await connectToDatabase()
 
@@ -32,7 +34,7 @@ export async function getUserById(userId) {
   }
 }
 
-export async function updateUser(clerkId, user) {
+export async function updateUser(clerkId: string, user: UpdateUserParams) {
   try {
     await connectToDatabase()
 
@@ -45,7 +47,7 @@ export async function updateUser(clerkId, user) {
   }
 }
 
-export async function deleteUser(clerkId) {
+export async function deleteUser(clerkId: string) {
   try {
     await connectToDatabase()
 

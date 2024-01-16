@@ -1,16 +1,17 @@
 "use server"
 
 import Stripe from 'stripe';
+import { CheckoutOrderParams, CreateOrderParams, GetOrdersByEventParams, GetOrdersByUserParams } from "../../types"
 import { redirect } from 'next/navigation';
-import { handleError } from '../../utils';
-import { connectToDatabase } from '../../database';
-import Order from '../../database/models/order.model';
-import Event from '../../database/models/event.model';
+import { handleError } from '../utils';
+import { connectToDatabase } from '../database';
+import Order from '../database/models/order.model';
+import Event from '../database/models/event.model';
 import {ObjectId} from 'mongodb';
-import User from '../../database/models/user.model';
+import User from '../database/models/user.model';
 
-export const checkoutOrder = async (order) => {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+export const checkoutOrder = async (order: CheckoutOrderParams) => {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
   const price = order.isFree ? 0 : Number(order.price) * 100;
 
@@ -37,13 +38,13 @@ export const checkoutOrder = async (order) => {
       cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/`,
     });
 
-    redirect(session.url)
+    redirect(session.url!)
   } catch (error) {
     throw error;
   }
 }
 
-export const createOrder = async (order) => {
+export const createOrder = async (order: CreateOrderParams) => {
   try {
     await connectToDatabase();
     
@@ -60,7 +61,7 @@ export const createOrder = async (order) => {
 }
 
 // GET ORDERS BY EVENT
-export async function getOrdersByEvent({ searchString, eventId }) {
+export async function getOrdersByEvent({ searchString, eventId }: GetOrdersByEventParams) {
   try {
     await connectToDatabase()
 
@@ -116,7 +117,7 @@ export async function getOrdersByEvent({ searchString, eventId }) {
 }
 
 // GET ORDERS BY USER
-export async function getOrdersByUser({ userId, limit = 3, page }) {
+export async function getOrdersByUser({ userId, limit = 3, page }: GetOrdersByUserParams) {
   try {
     await connectToDatabase()
 

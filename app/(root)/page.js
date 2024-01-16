@@ -13,8 +13,6 @@ export default function Home() {
           className='pt-0 inset-0 w-full z-0 h-screen bg-cover bg-center object-center'
         ></video>
 
-      
-          
         {/* ----------------(optional) Text-------------------- */}
         <div className='absolute inset-x-0 top-[35%] text-center text-white drop-shadow-sm'>
             <Image

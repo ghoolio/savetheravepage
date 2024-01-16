@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Link from 'next/link'
 import Image from 'next/image'
+import { links } from '../../constants/links'
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const MobileNav = () => {
     const [isClick, setisClick] = useState(false);
@@ -16,43 +18,58 @@ const MobileNav = () => {
     return (
         <nav>
             <div className='text-white lg:hidden'>
-                <button
-                    className="z-50 inline-flex items-center justify-center p-2.5 rounded-md text-white md:text-white 
-                    hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white bg-black/5 shadow-sm hover:bg-black/10"
-                    onClick={toggleNavbar}
-                >
-                    {isClick ? (
-                        <svg
-                            className="h-6 w-6 z-50"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M6 18L18 6M6 6l12 12"
-                            />
-                        </svg>
-                    ) : (
-                        <svg
-                            className="h-6 w-6 z-50"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M4 6h16M4 12h16m-7 6h7"
-                            />
-                        </svg>
-                    )}
-                </button>
+                <div className="flex justify-center items-center">
+                    <li>
+                        <div className="justify-center lg:flex pr-6 inset-x-0 bottom-[10.5%]">
+                            <SignedIn>
+                                <UserButton afterSignOutUrl="/" />
+                            </SignedIn>
+                            <SignedOut>
+                                <button asChild className="text-black hover:text-red-700 font-semibold rounded-full bg-white h-8 w-20" size="lg">
+                                    <Link href="/sign-in">Login</Link>
+                                </button>
+                            </SignedOut>
+                        </div>
+                    </li>
+
+                    <button
+                        className="z-50 inline-flex items-center justify-center p-2.5 rounded-md text-white md:text-white 
+                        hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white bg-black/5 shadow-sm hover:bg-black/10"
+                        onClick={toggleNavbar}
+                    >
+                        {isClick ? (
+                            <svg
+                                className="h-6 w-6 z-50"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+                        ) : (
+                            <svg
+                                className="h-6 w-6 z-50"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 6h16M4 12h16m-7 6h7"
+                                />
+                            </svg>
+                        )}
+                    </button>
+                </div>
                 
                 {isClick && (
                     <div className={`lg:hidden ${isClick ? "block" : "hidden"} bg-black absolute top-0 right-0 w-full h-full z-50`}>
@@ -120,38 +137,15 @@ const MobileNav = () => {
                                     )}
                                 </button>
                             </div>
-                            
+
                             <ul className="pt-10">
-                                <a
-                                    href="#events"
-                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-red-700"
-                                >
-                                    Events
-                                </a>
-                                <a
-                                    href="#tickets"
-                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-red-700"
-                                >
-                                    Tickets
-                                </a>
-                                <a
-                                    href="#artists"
-                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-red-700"
-                                >
-                                    Artists
-                                </a>
-                                <a
-                                    href="#artists"
-                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-red-700"
-                                >
-                                    Store
-                                </a>
-                                <a
-                                    href="#faq"
-                                    className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-red-700"
-                                >
-                                    FAQ
-                                </a>
+                                {links.map((link) => {
+                                    return (
+                                        <li className="p-2 block text-lg text-center text-white hover:bg-slate-900 hover:bg-opacity-75 hover:text-red-700">
+                                           <Link href={link.path}>{link.name}</Link> 
+                                        </li>
+                                    )  
+                                })} 
                             </ul>
                             
                             <ul className="flex justify-center hover:cursor-pointer pt-10">

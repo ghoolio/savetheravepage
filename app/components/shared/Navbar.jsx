@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import MobileNav from './MobileNav'
+import { links } from '../../constants/links'
 
 const Navbar = () => {
     const [isHovering, setIsHovered] = useState(false);
@@ -38,11 +39,13 @@ const Navbar = () => {
 
             <div className='hidden lg:inline'>
                 <ul className="flex justify-center hover:cursor-pointer pl-32">
-                    <li className='text-white hover:text-red-700 py-1 px-3 hover:rounded hover:bg-black/5 drop-shadow-sm'><a href="#events">Events</a></li>
-                    <li className='text-white hover:text-red-700 py-1 px-3 hover:rounded hover:bg-black/5 drop-shadow-sm'><a href="#tickets">Tickets</a></li>
-                    <li className='text-white hover:text-red-700 py-1 px-3 hover:rounded hover:bg-black/5 drop-shadow-sm'><a href="#artists">Artists</a></li>
-                    <li className='text-white hover:text-red-700 py-1 px-3 hover:rounded hover:bg-black/5 drop-shadow-sm'><a href="#store">Store</a></li>
-                    <li className='text-white hover:text-red-700 py-1 px-3 hover:rounded hover:bg-black/5 drop-shadow-sm'><a href="#faq">FAQ</a></li>
+                {links.map((link) => {
+                    return (
+                        <li className="text-white hover:text-red-700 py-1 px-3 hover:rounded hover:bg-black/5 drop-shadow-sm">
+                            <Link href={link.path}>{link.name}</Link> 
+                        </li>
+                    )  
+                })}
                 </ul>
             </div>
             
@@ -118,22 +121,22 @@ const Navbar = () => {
                     </li>
 
                     <li>
-                    <SignedIn>
-                        <nav>
-                            <MobileNav />
-                        </nav>
-                    </SignedIn>
+                        <SignedIn>
+                            <nav>
+                                <MobileNav />
+                            </nav>
+                        </SignedIn>
 
-                        <div className="justify-center lg:flex pl-3 inset-x-0 bottom-[10.5%]">
-                            <SignedIn>
-                                <UserButton afterSignOutUrl="/" />
-                            </SignedIn>
-                            <SignedOut>
-                                <button asChild className="hover:text-red-700 rounded-full bg-white h-8 w-20" size="lg">
-                                    <Link href="/sign-in">Login</Link>
-                                </button>
-                            </SignedOut>
-                        </div>
+                            <div className="justify-center lg:flex pl-3 inset-x-0 bottom-[10.5%]">
+                                <SignedIn>
+                                    <UserButton afterSignOutUrl="/" />
+                                </SignedIn>
+                                <SignedOut>
+                                    <button asChild className="hover:text-red-700 rounded-full bg-white h-8 w-20" size="lg">
+                                        <Link href="/sign-in">Login</Link>
+                                    </button>
+                                </SignedOut>
+                            </div>
                     </li>
 
                 </ul>

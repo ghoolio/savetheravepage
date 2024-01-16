@@ -1,18 +1,22 @@
 export const links = [
     {
-      name: "Model S",
-      path: "/",
+      name: "Events",
+      path: "#events",
     },
     {
-      name: "Model 3",
-      path: "/",
+      name: "Tickets",
+      path: "#tickets",
     },
     {
-      name: "Model X",
-      path: "/",
+      name: "Artists",
+      path: "#artists",
     },
     {
-      name: "Model Y",
-      path: "/",
+      name: "Store",
+      path: "#store",
+    },
+    {
+      name: "FAQ",
+      path: "#faq",
     },
   ];

@@ -25,7 +25,7 @@ const MobileNav = () => {
                                 <UserButton afterSignOutUrl="/" />
                             </SignedIn>
                             <SignedOut>
-                                <button asChild className="text-black hover:text-red-700 font-semibold rounded-full bg-white h-8 w-20" size="lg">
+                                <button asChild className="text-black hover:text-red-700 font-semibold text-sm rounded-full bg-white h-8 w-20" size="lg">
                                     <Link href="/sign-in">Login</Link>
                                 </button>
                             </SignedOut>

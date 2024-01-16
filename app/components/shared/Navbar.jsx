@@ -132,7 +132,7 @@ const Navbar = () => {
                                     <UserButton afterSignOutUrl="/" />
                                 </SignedIn>
                                 <SignedOut>
-                                    <button asChild className="hover:text-red-700 rounded-full bg-white h-8 w-20" size="lg">
+                                    <button asChild className="hover:text-red-700 text-sm font-semibold rounded-full bg-white h-8 w-20" size="lg">
                                         <Link href="/sign-in">Login</Link>
                                     </button>
                                 </SignedOut>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from 'next/link'
 import Image from 'next/image'
-import { links } from '../../constants/links'
+import { links } from '../../app/constants/links'
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const MobileNav = () => {

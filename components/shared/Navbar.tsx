@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import MobileNav from './MobileNav'
 import { links } from '../../constants/links'
+import { Button } from "../ui/button";
 
 const Navbar = () => {
     const [isHovering, setIsHovered] = useState(false);
@@ -132,9 +133,9 @@ const Navbar = () => {
                                     <UserButton afterSignOutUrl="/" />
                                 </SignedIn>
                                 <SignedOut>
-                                    <button asChild className="hover:text-red-700 text-sm font-semibold rounded-full bg-white h-8 w-20" size="lg">
+                                    <Button asChild className="hover:text-red-700 text-sm font-semibold rounded-full bg-white h-8 w-20" size="lg">
                                         <Link href="/sign-in">Login</Link>
-                                    </button>
+                                    </Button>
                                 </SignedOut>
                             </div>
                     </li>

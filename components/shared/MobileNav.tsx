@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Link from 'next/link'
 import Image from 'next/image'
-import { links } from '../../app/constants/links'
+import { links } from '../../constants/links'
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Button } from "../ui/button";
 
 const MobileNav = () => {
     const [isClick, setisClick] = useState(false);
@@ -25,9 +26,9 @@ const MobileNav = () => {
                                 <UserButton afterSignOutUrl="/" />
                             </SignedIn>
                             <SignedOut>
-                                <button asChild className="text-black hover:text-red-700 font-semibold text-sm rounded-full bg-white h-8 w-20" size="lg">
+                                <Button asChild className="text-black hover:text-red-700 font-semibold text-sm rounded-full bg-white h-8 w-20" size="lg">
                                     <Link href="/sign-in">Login</Link>
-                                </button>
+                                </Button>
                             </SignedOut>
                         </div>
                     </li>

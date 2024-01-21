@@ -1,7 +1,7 @@
-import Navbar from "../components/shared/Navbar"
-import Footer from "../components/shared/Footer"
+import Navbar from "../../components/shared/Navbar"
+import Footer from "../../components/shared/Footer"
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: {children: React.ReactNode}) {
     return (
 
       <div className="flex h-screen flex-col">

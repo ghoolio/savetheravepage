@@ -42,7 +42,7 @@ const Navbar = () => {
                 <ul className="flex justify-center hover:cursor-pointer pl-32">
                 {links.map((link) => {
                     return (
-                        <li className="text-white hover:text-red-700 py-1 px-3 hover:rounded hover:bg-black/5 drop-shadow-sm">
+                        <li className="text-white hover:text-red-700 px-3 hover:rounded hover:bg-black/5 drop-shadow-sm">
                             <Link href={link.path}>{link.name}</Link> 
                         </li>
                     )  
@@ -53,7 +53,7 @@ const Navbar = () => {
 
             <div className='hidden lg:inline'>
                 <ul className="flex justify-center hover:cursor-pointer">
-                    <li className='text-white py-1 px-3 hover:rounded drop-shadow-sm'>
+                    <li className='text-white py-5 px-3 hover:rounded drop-shadow-sm'>
                         <a href="https://t.me/+cQNcvSJW6RwzNTQy">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ const Navbar = () => {
                         </a>
                     </li>
 
-                    <li className='text-white py-1 px-3 hover:rounded drop-shadow-sm'>
+                    <li className='text-white py-5 px-3 hover:rounded drop-shadow-sm'>
                         <a href="https://www.tiktok.com/@save.the.rave.1?_t=8iyVWwe5Tw8&_r=1">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +87,7 @@ const Navbar = () => {
                         </a>
                     </li>
 
-                    <li className='text-white py-1 px-3 hover:rounded drop-shadow-sm'>
+                    <li className='text-white py-5 px-3 hover:rounded drop-shadow-sm'>
                         <a href="https://www.instagram.com/save.the.rave.events">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@ const Navbar = () => {
                         </a>
                     </li>
 
-                    <li className='text-white py-1 px-3 hover:rounded drop-shadow-sm'>
+                    <li className='text-white py-5 px-3 hover:rounded drop-shadow-sm'>
                         <a href="https://www.facebook.com/Savetheraveevents">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -128,12 +128,12 @@ const Navbar = () => {
                             </nav>
                         </SignedIn>
 
-                            <div className="justify-center lg:flex pl-3 inset-x-0 bottom-[10.5%]">
+                            <div className="justify-center lg:flex py-4 pl-3 inset-x-0 bottom-[10.5%]">
                                 <SignedIn>
                                     <UserButton afterSignOutUrl="/" />
                                 </SignedIn>
                                 <SignedOut>
-                                    <Button asChild className="hover:text-red-700 text-sm font-semibold rounded-full bg-white h-8 w-20" size="lg">
+                                    <Button asChild className="text-black hover:text-white text-sm font-semibold rounded-full bg-white h-8 w-20" size="lg">
                                         <Link href="/sign-in">Login</Link>
                                     </Button>
                                 </SignedOut>

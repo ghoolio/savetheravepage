@@ -6,10 +6,10 @@ export default function RootLayout({ children }: {children: React.ReactNode}) {
 
       <div className="flex h-screen flex-col">
         <div className='absolute z-10 w-full'>
-          <Navbar />
+          {/* <Navbar /> */}
         </div>
         <main className="flex-1">{children}</main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
 
     )

@@ -1,17 +1,15 @@
-const { webpack } = require('next/dist/compiled/webpack/webpack')
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    images: {
-      remotePatterns: [
-        {
-          protocol: 'https',
-          hostname: 'avatars.dicebar.com',
-          pathname: '**',
-        },
-      ],
-    },
+  images: {
+    domains: ['utfs.io'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'utfs.io',
+        port: ''
+      }
+    ]
+  }
 }
 
 module.exports = nextConfig

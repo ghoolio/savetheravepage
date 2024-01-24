@@ -40,9 +40,8 @@ export default function Home() {
       <div id='events' className="wrapper my-8 flex flex-col gap-8 md:gap-12">
         <h2 className='z-50 h2-bold'>Trusted</h2>
         <div className='flex w-full flex-col gap-5 flex-row'>
-          Search
-          CategoryFilter
-        </div>  
+          
+        </div>
       </div>
     </>
   )

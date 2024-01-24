@@ -42,7 +42,7 @@ const Navbar = () => {
                 <ul className="flex justify-center hover:cursor-pointer pl-32">
                 {links.map((link) => {
                     return (
-                        <li className="text-white hover:text-red-700 px-3 hover:rounded hover:bg-black/5 drop-shadow-sm">
+                        <li className="text-white hover:text-red-700 py-3 px-3 hover:rounded hover:bg-black/5 drop-shadow-sm">
                             <Link href={link.path}>{link.name}</Link> 
                         </li>
                     )  

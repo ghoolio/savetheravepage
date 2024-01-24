@@ -112,6 +112,8 @@ export async function getOrdersByEvent({ searchString, eventId }: GetOrdersByEve
 
     return JSON.parse(JSON.stringify(orders))
   } catch (error) {
+    //debugging
+    console.log(error)
     handleError(error)
   }
 }

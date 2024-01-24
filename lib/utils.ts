@@ -16,11 +16,11 @@ export const formatDateTime = (dateString: Date) => {
     day: 'numeric', // numeric day of the month (e.g., '25')
     hour: 'numeric', // numeric hour (e.g., '8')
     minute: 'numeric', // numeric minute (e.g., '30')
-    hour12: true, // use 12-hour clock (true) or 24-hour clock (false)
+    hour12: false, // use 12-hour clock (true) or 24-hour clock (false)
   }
 
   const dateOptions: Intl.DateTimeFormatOptions = {
-    weekday: 'short', // abbreviated weekday name (e.g., 'Mon')
+    weekday: 'long', // abbreviated weekday name (e.g., 'Mon')
     month: 'short', // abbreviated month name (e.g., 'Oct')
     year: 'numeric', // numeric year (e.g., '2023')
     day: 'numeric', // numeric day of the month (e.g., '25')
@@ -29,14 +29,14 @@ export const formatDateTime = (dateString: Date) => {
   const timeOptions: Intl.DateTimeFormatOptions = {
     hour: 'numeric', // numeric hour (e.g., '8')
     minute: 'numeric', // numeric minute (e.g., '30')
-    hour12: true, // use 12-hour clock (true) or 24-hour clock (false)
+    hour12: false, // use 12-hour clock (true) or 24-hour clock (false)
   }
 
-  const formattedDateTime: string = new Date(dateString).toLocaleString('en-US', dateTimeOptions)
+  const formattedDateTime: string = new Date(dateString).toLocaleString('de-DE', dateTimeOptions)
 
   const formattedDate: string = new Date(dateString).toLocaleString('en-US', dateOptions)
 
-  const formattedTime: string = new Date(dateString).toLocaleString('en-US', timeOptions)
+  const formattedTime: string = new Date(dateString).toLocaleString('de-DE', timeOptions)
 
   return {
     dateTime: formattedDateTime,
@@ -49,9 +49,9 @@ export const convertFileToUrl = (file: File) => URL.createObjectURL(file)
 
 export const formatPrice = (price: string) => {
   const amount = parseFloat(price)
-  const formattedPrice = new Intl.NumberFormat('en-US', {
+  const formattedPrice = new Intl.NumberFormat('de-DE', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'EUR',
   }).format(amount)
 
   return formattedPrice

@@ -28,26 +28,23 @@ export const DeleteConfirmation = ({ eventId }: { eventId: string }) => {
         <Image src="/assets/icons/delete.svg" alt="edit" width={20} height={20} />
       </AlertDialogTrigger>
 
-      // ... (vorheriger Code)
-
-      {/* @ts-ignore */}
       <AlertDialogContent>
         <div className="bg-white">
-          {/* @ts-ignore */}
+  
           <AlertDialogHeader>
-            {/* @ts-ignore */}
+    
             <AlertDialogTitle>Are you sure you want to delete?</AlertDialogTitle>
-            {/* @ts-ignore */}
+    
             <AlertDialogDescription className="p-regular-16 text-grey-600">
               This will permanently delete this event
             </AlertDialogDescription>
           </AlertDialogHeader>
 
-          {/* @ts-ignore */}
+  
           <AlertDialogFooter>
-            {/* @ts-ignore */}
+    
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            {/* @ts-ignore */}
+    
             <AlertDialogAction
               onClick={() =>
                 startTransition(async () => {

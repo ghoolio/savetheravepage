@@ -82,6 +82,12 @@ body {
     hue-rotate(32deg) brightness(98%) contrast(92%);
 }
 
+/* my shadow */
+.customShadow {
+  box-shadow: 0 0 10px rgba(140, 140, 140, 0.25);
+}
+
+
 /* ========================================== TAILWIND STYLES */
 @layer utilities {
   .wrapper {

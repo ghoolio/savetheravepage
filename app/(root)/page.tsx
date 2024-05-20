@@ -1,17 +1,34 @@
+import Collection from '@/components/shared/Collection';
+import { getAllEvents } from '@/lib/actions/event.actions';
 import Image from 'next/image'
 import { FiChevronDown } from "react-icons/fi";
+import { SearchParamProps } from '@/types';
 
-export default function Home() {
+export default async function Home({ searchParams }: SearchParamProps) {
+  const page = Number(searchParams?.page) || 1;
+  const searchText = (searchParams?.query as string) || '';
+  const category = (searchParams?.category as string) || '';
+
+  const events = await getAllEvents({
+    query: searchText,
+    category,
+    page,
+    limit: 6
+  })
+
   return (
     <>
-      <div className='bg-primary-50 bg-dotted-pattern bg-contain'>
-        <video
-          src="/images/str2.mp4"
-          autoPlay={true}
-          loop
-          muted
-          className='pt-0 inset-0 w-full z-0 h-screen bg-cover bg-center object-center'
-        ></video>
+      <section className='bg-black bg-dotted-pattern bg-contain'>
+        <div>
+          <video
+            src="/images/str2.mp4"
+            autoPlay={true}
+            loop
+            muted
+            className='pt-0 inset-0 w-full z-0 h-screen bg-cover bg-center object-center'
+          ></video>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#000000] opacity-100"></div>
+        </div>
 
         {/* ----------------(optional) Text-------------------- */}
         <div className='absolute inset-x-0 top-[35%] text-center text-white drop-shadow-sm'>
@@ -34,17 +51,23 @@ export default function Home() {
         <div className='flex justify-center animate-bounce absolute inset-x-0 bottom-[3%] text-white drop-shadow-md'>
             <a href="#events"><FiChevronDown size={30} /></a>
         </div>
-      </div>
-    
-
-      <div id='events' className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-        <h2 className='z-50 h2-bold'>Trusted</h2>
-        <div className='flex w-full flex-col gap-5 flex-row'>
-          
+      </section>
+      
+      <section id='events' className='bg-black'>
+        <div className="wrapper flex flex-col gap-8 md:gap-12">
+        <h2 className='text-white z-50 h2-bold'>Upcoming Events</h2>
+        <Collection
+          data={events?.data}
+          emptyTitle='Currently No Events'
+          emptyStateSubtext='Come back later'
+          collectionType='All_Events'
+          limit={6}
+          page={page}
+          totalPages={events?.totalPages}
+        />
         </div>
-      </div>
+      </section>
     </>
   )
-  
 }
 

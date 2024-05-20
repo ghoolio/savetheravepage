@@ -73,7 +73,7 @@ const MobileNav = () => {
                 </div>
                 
                 {isClick && (
-                    <div className={`lg:hidden ${isClick ? "block" : "hidden"} bg-black absolute top-0 right-0 w-full h-full z-50`}>
+                    <div className={`lg:hidden ${isClick ? "block" : "hidden"} absolute top-0 right-0 w-full h-full z-50`}>
                         <div className="w-full h-screen pb-3 space-y-1 sm:px-3 bg-black z-50">
                             <div 
                                 className="flex justify-between items-center px-12 p-4"
@@ -85,14 +85,14 @@ const MobileNav = () => {
                                 <Link href="/">
                                     {isHovering ? (
                                         <Image
-                                            src="images/logo1.svg"
+                                            src="assets/images/logo1.svg"
                                             alt="Save The Rave Logo"
                                             width={150}
                                             height={150}
                                         />
                                     ) : (
                                         <Image
-                                            src="images/logo2.svg"
+                                            src="assets/images/logo2.svg"
                                             alt="Save The Rave Logo"
                                             width={150}
                                             height={150}

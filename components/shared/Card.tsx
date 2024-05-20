@@ -19,7 +19,7 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
   const isEventCreator = userId === event.organizer._id.toString();
 
   return (
-    <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
+    <div className="bg-zinc-900 hover:shadow-[0_0_10px_0_rgba(229,0,0,0.25)]-red-700 group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl shadow-lg transition-all hover:shadow-xl md:min-h-[438px]">
       <Link 
         href={`/events/${event._id}`}
         style={{backgroundImage: `url(${event.imageUrl})`}}
@@ -40,31 +40,35 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
       <div
         className="flex min-h-[230px] flex-col gap-3 p-5 md:gap-4"
       > 
+        <p className="p-medium-16 p-medium-18 text-grey-500">
+          {formatDateTime(event.startDateTime).dateTime}
+        </p>
+
+        <Link href={`/events/${event._id}`}>
+          <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-white hover:text-red-700">{event.title}</p>
+        </Link>
+
+        <p className="text-sm text-white">
+          {event.lineup}
+        </p>
+
        {!hidePrice && <div className="flex gap-2">
           <span className="p-semibold-14 w-min rounded-full bg-green-100 px-4 py-1 text-green-60">
-            {event.isFree ? 'FREE' : `$${event.price}`}
+            {event.isFree ? 'FREE' : `€${event.price}`}
           </span>
           <p className="p-semibold-14 w-min rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-1">
             {event.category.name}
           </p>
         </div>}
 
-        <p className="p-medium-16 p-medium-18 text-grey-500">
-          {formatDateTime(event.startDateTime).dateTime}
-        </p>
-
-        <Link href={`/events/${event._id}`}>
-          <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black">{event.title}</p>
-        </Link>
-
         <div className="flex-between w-full">
-          <p className="p-medium-14 md:p-medium-16 text-grey-600">
+          {/* <p className="p-small-14 md:p-medium-16 text-grey-600">
             {event.organizer.firstName} {event.organizer.lastName}
-          </p>
+          </p> */}
 
           {hasOrderLink && (
             <Link href={`/orders?eventId=${event._id}`} className="flex gap-2">
-              <p className="text-slate-500">Order Details</p>
+              <p className="text-white">Order Details</p>
               <Image src="/assets/icons/arrow.svg" alt="search" width={10} height={10} />
             </Link>
           )}

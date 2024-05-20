@@ -8,5 +8,6 @@ export const eventDefaultValues = {
     categoryId: '',
     price: '',
     isFree: false,
-    url: '',
+    /* url: '', */
+    lineup: '',
   }

@@ -21,6 +21,7 @@ const ShopFrame = () => {
     };
   }, []);
 
+  // Bei data-url muss der Eventix-Link aus der Datenbank rein
   return (
     <div id="shop-frame" data-url="https://shop.eventix.io/dc9fd3dd-6c4a-11ee-9fc1-6a57c78572ab" className="max-w-600 mx-auto"></div>
   );
